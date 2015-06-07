@@ -1,0 +1,12 @@
+source-contains-prebuilt-binary
+
+# upstream provides no signatures
+debian-watch-may-check-gpg-signature
+
+version-substvar-for-external-package fglrx-driver -> glx
+version-substvar-for-external-package libfglrx -> amdxvba1
+version-substvar-for-external-package libfglrx-amdxvba1 -> glx
+version-substvar-for-external-package libxvbaw-dev -> amdxvba1
+version-substvar-for-external-package fglrx-control -> driver
+version-substvar-for-external-package fglrx-atieventsd -> driver
+version-substvar-for-external-package fglrx-driver -> modules-dkms

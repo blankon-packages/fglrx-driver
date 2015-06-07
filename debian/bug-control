@@ -1,0 +1,3 @@
+report-with: fglrx-driver xserver-xorg-video-intel
+
+package-status: xserver-xorg xserver-xorg-core linux-headers libdrm-radeon1 xserver-xorg-video-ati xserver-xorg-video-radeon ia32-libs

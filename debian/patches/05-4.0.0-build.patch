@@ -1,0 +1,111 @@
+# Patch to fix FTBFS with Linux 4.0.0.
+# Thanks to Michael Rasmussen <mir@datanom.net>.
+# Closes: #785150
+
+diff -Naur fglrx-driver-14.12.orig/common/lib/modules/fglrx/build_mod/firegl_public.c fglrx-driver-14.12/common/lib/modules/fglrx/build_mod/firegl_public.c
+--- fglrx-driver-14.12.orig/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-05-21 19:37:07.871877002 +0200
++++ fglrx-driver-14.12/common/lib/modules/fglrx/build_mod/firegl_public.c	2015-05-21 19:38:52.438059267 +0200
+@@ -4471,8 +4471,13 @@
+ 
+     if (cpu_has_pge)
+     {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 20, 0)
+         cr4 = read_cr4();
+         write_cr4(cr4 & ~X86_CR4_PGE);
++#else
++        cr4 = __read_cr4();
++        __write_cr4(cr4 & ~X86_CR4_PGE);
++#endif
+     }
+      __flush_tlb();
+ 
+@@ -4485,7 +4490,11 @@
+     write_cr0(cr0 & 0xbfffffff);
+     if (cpu_has_pge)
+     {
+-        write_cr4(cr4);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 20, 0)
++        write_cr4(cr4 & ~X86_CR4_PGE);
++#else
++        __write_cr4(cr4 & ~X86_CR4_PGE);
++#endif
+     }
+     local_irq_restore(flags);
+ 
+@@ -4512,8 +4521,13 @@
+ 
+     if (cpu_has_pge)
+     {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 20, 0)
+         cr4 = read_cr4();
+         write_cr4(cr4 & ~X86_CR4_PGE);
++#else
++        cr4 = __read_cr4();
++        __write_cr4(cr4 & ~X86_CR4_PGE);
++#endif
+     }
+      __flush_tlb();
+   
+@@ -4525,7 +4539,11 @@
+     write_cr0(cr0 & 0xbfffffff);
+     if (cpu_has_pge)
+     {
+-        write_cr4(cr4);
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 20, 0)
++        write_cr4(cr4 & ~X86_CR4_PGE);
++#else
++        __write_cr4(cr4 & ~X86_CR4_PGE);
++#endif
+     }
+     local_irq_restore(flags);
+ 
+@@ -4819,8 +4837,13 @@
+ {
+     unsigned long orig_level;
+ 
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 20, 0)
+     orig_level = __get_cpu_var(kasExecutionLevel);
+     __get_cpu_var(kasExecutionLevel) = level;
++#else
++    orig_level = __this_cpu_read(kasExecutionLevel);
++    __this_cpu_write(kasExecutionLevel, level);
++#endif
+ 
+     return orig_level;
+ }
+@@ -4832,7 +4855,11 @@
+  */
+ static unsigned long kas_GetExecutionLevel(void)
+ {
++#if LINUX_VERSION_CODE < KERNEL_VERSION(3, 20, 0)
+     return __get_cpu_var(kasExecutionLevel);
++#else
++    return __this_cpu_read(kasExecutionLevel);
++#endif
+ }
+ 
+ /** \brief Type definition for kas_spin_lock() parameter */
+diff -Naur fglrx-driver-14.12.orig/common/lib/modules/fglrx/build_mod/kcl_acpi.c fglrx-driver-14.12/common/lib/modules/fglrx/build_mod/kcl_acpi.c
+--- fglrx-driver-14.12.orig/common/lib/modules/fglrx/build_mod/kcl_acpi.c	2015-05-21 19:37:07.871877002 +0200
++++ fglrx-driver-14.12/common/lib/modules/fglrx/build_mod/kcl_acpi.c	2015-05-21 19:38:52.438059267 +0200
+@@ -831,7 +831,7 @@
+ 
+ static acpi_status KCL_ACPI_Slot_No_Hotplug(KCL_ACPI_DevHandle handle, u32 lvl, void *data, void **rv)
+ {
+-#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,12,7)
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(3,12,7) && LINUX_VERSION_CODE < KERNEL_VERSION(3,20,0)
+    struct acpi_device *tdev = NULL;
+    struct pci_dev *pdev = (struct pci_dev *)data;
+    int device = 0;
+diff -Naur fglrx-driver-14.12.orig/common/lib/modules/fglrx/build_mod/kcl_str.c fglrx-driver-14.12/common/lib/modules/fglrx/build_mod/kcl_str.c
+--- fglrx-driver-14.12.orig/common/lib/modules/fglrx/build_mod/kcl_str.c	2014-11-28 21:02:10.000000000 +0100
++++ fglrx-driver-14.12/common/lib/modules/fglrx/build_mod/kcl_str.c	2015-05-21 19:38:52.442059201 +0200
+@@ -169,7 +169,7 @@
+                                   const char* s2,
+                                   KCL_TYPE_SizeSigned count)
+ {
+-    return strnicmp(s1, s2, count);
++    return strncasecmp(s1, s2, count);
+ }
+ 
+ /** \brief Locate character in string

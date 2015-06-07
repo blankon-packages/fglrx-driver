@@ -1,0 +1,4 @@
+version=3
+opts="uversionmangle=s/-beta/~beta/" \
+http://support.amd.com/en-us/download/desktop\?os=Linux\+x86 \
+.*/amd(?:-driver-installer)?(?:-catalyst)?(?:-omega)?-(.*)(?:\.linux-x86.x86_64|-linux-run-installers).(?:run|zip)

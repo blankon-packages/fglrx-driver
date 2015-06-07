@@ -1,0 +1,5 @@
+This driver release supports the following graphics adapter families:
+AMD Radeon R9 Series, AMD Radeon R7 Series, AMD Radeon HD 8000,
+AMD Radeon HD 7000, AMD Radeon HD 6000, and AMD Radeon HD 5000.
+
+For older models try the fglrx-legacy-driver package.

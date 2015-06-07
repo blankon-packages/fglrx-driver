@@ -1,0 +1,17 @@
+fglrx-driver (1:12-6+point-2) unstable; urgency=low
+
+  Starting with the Catalyst 12.6 release, AMD/ATI has moved the support for
+  R6XX/R7XX based GPUs to a legacy driver.
+  This includes any RadeonHD older than 5xxx,
+  e.g.  RadeonHD 2000
+        RadeonHD 3000
+        RadeonHD 4000
+  These graphics adapters are only supported by the fglrx-legacy-driver
+  package or the free Radeon driver (xserver-xorg-video-radeon).
+
+  Before the Radeon driver can be used you must remove Fglrx configuration
+  from /etc/X11/xorg.conf (and /etc/X11/xorg.conf.d/).
+  The Radeon driver should work without needing any specific xorg.conf
+  settings, having no xorg.conf at all should be fine.
+
+ -- Andreas Beckmann <debian@abeckmann.de>  Wed, 19 Sep 2012 12:02:40 +0200

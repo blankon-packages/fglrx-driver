@@ -1,0 +1,5 @@
+01-dkms-arch_compat.patch
+02-authatieventsd.sh.patch
+03-stub-for-agpless-kernel.patch
+04-3.17rc6-no_hotplug.patch
+05-4.0.0-build.patch

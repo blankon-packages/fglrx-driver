@@ -1,0 +1,38 @@
+Source: _FGLRX_-driver
+Section: non-free/kernel
+Priority: extra
+Maintainer: Fglrx packaging team <pkg-fglrx-devel@lists.alioth.debian.org>
+Uploaders:
+ Patrick Matthäi <pmatthaei@debian.org>,
+ Michael Gilbert <mgilbert@debian.org>,
+ Andreas Beckmann <debian@abeckmann.de>,
+Build-Depends: debhelper (>= 8)
+Standards-Version: 3.9.5
+Vcs-Svn: svn://anonscm.debian.org/pkg-fglrx/fglrx-driver/trunk
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-fglrx/fglrx-driver/trunk/
+XS-Autobuild: yes
+Homepage: http://support.amd.com/en-us/download/desktop?os=Linux%20x86
+
+Package: _FGLRX_-kernel-#KVERS#
+Architecture: i386 amd64
+Recommends: linux-image-#KVERS#
+Provides:
+ fglrx-kernel-${fglrx:Version},
+ fglrx-module-#KVERS#,
+Conflicts:
+ fglrx-module-#KVERS#,
+Replaces:
+ fglrx-module-#KVERS#,
+Built-Using:
+ ${built:using:kernel},
+ ${built:using:fglrx},
+Description: FGLRX binary kernel module for Linux #KVERS#
+ FGLRX / AMD Catalyst is the non-free proprietary display driver for the
+ ATI/AMD RadeonHD and FireGL graphics cards. As an alternative, you may try
+ the newest free driver xserver-xorg-video-radeon.
+ .
+ This package provides the non-free FGLRX binary kernel module built for
+ the Debian Linux kernel package. This kernel module is necessary to have
+ accelerated 3D support within the ATI/AMD proprietary display driver.
+ .
+ This package is built for linux-image-#KVERS#.

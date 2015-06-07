@@ -1,0 +1,111 @@
+# Dutch translation of fglrx-driver debconf templates.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the fglrx-driver package.
+# Frans Spiesschaert <Frans.Spiesschaert@yucom.be>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: fglrx-driver\n"
+"Report-Msgid-Bugs-To: fglrx-driver@packages.debian.org\n"
+"POT-Creation-Date: 2014-10-21 15:17+0200\n"
+"PO-Revision-Date: 2014-10-21 22:12+0200\n"
+"Last-Translator: Frans Spiesschaert <Frans.Spiesschaert@yucom.be>\n"
+"Language-Team: Debian Dutch l10n Team <debian-l10n-dutch@lists.debian.org>\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Type: boolean
+#. Description
+#. Translators, do not translate the ${substitution} ${variables}.
+#. ${vendor} will be substituted with 'NVIDIA' or 'Fglrx' (without quotes, of
+#. course), ${free_name} will become 'Nouveau' or 'Radeon' (no quotes, again)
+#. and the ${*driver} variables will be replaced with package names.
+#: ../libfglrx.templates:2001
+msgid "Install ${vendor} driver despite unsupported graphics card?"
+msgstr ""
+"Toch het ${vendor}-stuurprogramma installeren, hoewel de grafische kaart "
+"niet ondersteund wordt?"
+
+#. Type: boolean
+#. Description
+#: ../libfglrx.templates:2001
+msgid ""
+"This system has a graphics card which is no longer handled by the ${vendor} "
+"driver (package ${driver}). You may wish to keep the package installed - for "
+"instance to drive some other card - but the card with the following chipset "
+"won't be usable:"
+msgstr ""
+"Dit systeem heeft een grafische kaart die niet langer beheerd wordt door het "
+"stuurprogramma van ${vendor} (pakket ${driver}). Misschien wilt u het pakket "
+"geïnstalleerd houden - bijvoorbeeld om een andere kaart aan te sturen - maar "
+"de kaart met de volgende chipset zal niet bruikbaar zijn:"
+
+#. Type: boolean
+#. Description
+#: ../libfglrx.templates:2001
+msgid ""
+"The above card requires either the non-free legacy ${vendor} driver (package "
+"${legacy_driver}) or the free ${free_name} driver (package ${free_driver})."
+msgstr ""
+"De hierboven vermelde kaart heeft ofwel het niet-vrije vroegere ${vendor}-"
+"stuurprogramma (pakket ${legacy_driver}) of het vrije ${free_name}-"
+"stuurprogramma (pakket ${free_driver}) nodig."
+
+#. Type: boolean
+#. Description
+#: ../libfglrx.templates:2001
+msgid ""
+"Before the ${free_name} driver can be used you must remove ${vendor} "
+"configuration from xorg.conf (and xorg.conf.d/)."
+msgstr ""
+"Vooraleer u het ${free_name}-stuurprogramma kunt gebruiken, moet u de "
+"instellingen voor ${vendor} verwijderen uit xorg.conf (en xorg.conf.d/)."
+
+#. Type: note
+#. Description
+#: ../fglrx-driver.templates:1001
+msgid "Manual configuration required to enable fglrx driver"
+msgstr ""
+"Een handmatige configuratie is nodig om het fglrx-stuurprogramma te activeren"
+
+#. Type: note
+#. Description
+#: ../fglrx-driver.templates:1001
+msgid ""
+"The fglrx driver is not yet configured. Please consider using /usr/bin/"
+"aticonfig to create a working xorg.conf configuration."
+msgstr ""
+"Het fglrx-stuurprogramma is nog niet ingesteld. Overweeg om /usr/bin/"
+"aticonfig te gebruiken om een functionerend configuratiebestand xorg.conf "
+"aan te maken."
+
+#. Type: note
+#. Description
+#: ../fglrx-driver.templates:1001
+msgid ""
+"For example, \"sudo aticonfig --initial\" should be sufficient for most use "
+"cases."
+msgstr ""
+"Bijvoorbeeld volstaat in de meeste gevallen gewoon het commando \"sudo "
+"aticonfig --initial\"."
+
+#. Type: note
+#. Description
+#: ../fglrx-driver.templates:3001
+msgid "Fglrx driver is still enabled in xorg.conf"
+msgstr "In xorg.conf staat het fglrx-stuurprogramma nog steeds ingesteld"
+
+#. Type: note
+#. Description
+#: ../fglrx-driver.templates:3001
+msgid ""
+"The fglrx driver was just removed, but it is still enabled in the Xorg "
+"configuration. X cannot be (re-)started successfully until fglrx is disabled "
+"in the following config file(s):"
+msgstr ""
+"Zopas werd het fglrx-stuurprogramma verwijderd, maar het staat nog steeds "
+"ingesteld in de configuratie van Xorg. X kan niet met succes opnieuw gestart "
+"worden totdat fglrx uitgeschakeld wordt in de volgende configuratiebestanden:"

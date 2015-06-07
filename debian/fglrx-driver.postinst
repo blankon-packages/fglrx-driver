@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+. /usr/share/debconf/confmodule
+
+if [ "$1" = "configure" ]; then
+
+	if [ -f /usr/lib/fglrx/diversions/libdri.so ]; then
+		dpkg-divert --package fglrx-driver --rename --remove /usr/lib/xorg/modules/extensions/libdri.so || true
+	fi
+	rmdir /usr/lib/fglrx/diversions 2>/dev/null || true
+
+fi
+
+#DEBHELPER#

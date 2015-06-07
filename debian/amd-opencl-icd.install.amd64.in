@@ -1,0 +1,2 @@
+arch/_ARCH_/usr/_LIB_/libamdocl64.so		_LIBDIR_/
+arch/x86_64/etc/OpenCL/vendors/amdocl64.icd	etc/OpenCL/vendors/

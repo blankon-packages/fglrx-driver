@@ -1,0 +1,14 @@
+no-upstream-changelog
+[i386]: binary-file-built-without-LFS-support
+hardening-no-fortify-functions
+hardening-no-relro
+sharedobject-in-library-directory-missing-soname
+[i386]: spelling-error-in-binary usr/lib*/libamdocl32.so ment meant
+[i386]: spelling-error-in-binary usr/lib*/libamdocl32.so nam name
+[i386]: spelling-error-in-binary usr/lib/*/libamdocl32.so Simliar Similar
+[i386]: spelling-error-in-binary usr/lib/*/libamdocl32.so treshold threshold
+[amd64]: spelling-error-in-binary usr/lib*/libamdocl64.so ment meant
+[amd64]: spelling-error-in-binary usr/lib*/libamdocl64.so nam name
+[amd64]: spelling-error-in-binary usr/lib*/libamdocl64.so tEH the
+[amd64]: spelling-error-in-binary usr/lib/*/libamdocl64.so Simliar Similar
+[amd64]: spelling-error-in-binary usr/lib/*/libamdocl64.so treshold threshold
